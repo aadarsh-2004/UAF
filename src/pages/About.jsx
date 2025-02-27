@@ -3,11 +3,12 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import {
   Heart,
   ArrowRight,
-  Award,
-  Users,
+  Menu,
+  X,
   Home,
   Syringe,
   Stethoscope,
+  Link,
 } from "lucide-react";
 
 const AnimatedCounter = ({ value }) => {
@@ -29,6 +30,16 @@ const AnimatedCounter = ({ value }) => {
 };
 
 const AboutPage = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   const founderInfo = {
     name: "",
     role: "Founding team",
@@ -70,15 +81,17 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 ">
+    <div className="min-h-screen bg-amber-50">
       {/* Mission Section */}
-      <section className="relative py-28 bg-blue-600 text-white overflow-hidden to-pink top-12">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800" />
+      <section className="relative py-28 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-600 to-amber-800" />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-5xl mx-auto text-center space-y-8">
-            <Heart className="w-12 h-12 mx-auto text-blue-300" />
-            <h1 className="text-4xl md:text-5xl font-bold">Our Mission</h1>
-            <p className="text-xl leading-relaxed text-blue-100">
+            <Heart className="w-12 h-12 mx-auto text-amber-300" />
+            <h1 className="text-4xl md:text-5xl font-bold text-white">
+              Our Mission
+            </h1>
+            <p className="text-xl leading-relaxed text-amber-100">
               "To provide food, shelter, and medical care to stray animals in
               Udaipur, and to promote compassion and kindness towards all living
               beings."
@@ -99,15 +112,15 @@ const AboutPage = () => {
               />
             </div>
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-gray-900">Our Journey</h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <h2 className="text-3xl font-bold text-amber-900">Our Journey</h2>
+              <p className="text-lg text-amber-800 leading-relaxed">
                 Udaipur Animal Feed was founded in 2015 by a group of animal
                 lovers who were concerned about the welfare of stray animals in
                 Udaipur. Our organization has grown rapidly since then, and we
                 now have a team of dedicated volunteers and staff who work
                 tirelessly to care for animals in need.
               </p>
-              <button className="group flex items-center gap-2 text-blue-600 font-semibold">
+              <button className="group flex items-center gap-2 text-amber-700 font-semibold">
                 Learn more about our history
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -117,13 +130,13 @@ const AboutPage = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gray-100">
+      <section className="py-20 bg-amber-100">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-amber-900 mb-4">
               Our Services
             </h2>
-            <p className="text-lg text-gray-700">
+            <p className="text-lg text-amber-800">
               Comprehensive care and support for street animals through various
               programs and initiatives.
             </p>
@@ -131,9 +144,11 @@ const AboutPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-                <div className="text-blue-600 mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <div className="text-amber-600 mb-4">{service.icon}</div>
+                <h3 className="text-xl font-semibold text-amber-900 mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-amber-700">{service.description}</p>
               </div>
             ))}
           </div>
@@ -141,7 +156,7 @@ const AboutPage = () => {
       </section>
 
       {/* Achievements Section */}
-      <section className="py-20 bg-blue-600 text-white overflow-hidden">
+      <section className="py-20 bg-amber-700 text-white overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -178,7 +193,7 @@ const AboutPage = () => {
                 >
                   <AnimatedCounter value={achievement.number} />
                 </motion.div>
-                <div className="text-blue-200">{achievement.label}</div>
+                <div className="text-amber-200">{achievement.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -189,8 +204,8 @@ const AboutPage = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Team</h2>
-            <p className="text-lg text-gray-700">
+            <h2 className="text-3xl font-bold text-amber-900 mb-4">Our Team</h2>
+            <p className="text-lg text-amber-700">
               Meet the dedicated individuals who make our mission possible.
             </p>
           </div>
@@ -202,13 +217,35 @@ const AboutPage = () => {
                 className="w-full h-64 object-cover"
               />
               <div className="p-6 text-center">
-                <h3 className="text-xl font-semibold mb-1">
+                <h3 className="text-xl font-semibold mb-1 text-amber-900">
                   {founderInfo.name}
                 </h3>
-                <p className="text-blue-600 mb-4">{founderInfo.role}</p>
-                <p className="text-gray-600">{founderInfo.bio}</p>
+                <p className="text-amber-700 mb-4">{founderInfo.role}</p>
+                <p className="text-amber-800">{founderInfo.bio}</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 bg-amber-100">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-amber-900 mb-6">
+            Join Our Mission Today
+          </h2>
+          <p className="text-lg text-amber-800 max-w-2xl mx-auto mb-8">
+            Help us make a difference in the lives of stray animals in Udaipur.
+            Your support can provide food, shelter, and medical care to animals
+            in need.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-amber-800 hover:bg-amber-900 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300">
+              Donate Now
+            </button>
+            <button className="bg-white text-amber-800 border-2 border-amber-800 hover:bg-amber-50 font-bold py-3 px-8 rounded-full transition-colors duration-300">
+              Volunteer With Us
+            </button>
           </div>
         </div>
       </section>

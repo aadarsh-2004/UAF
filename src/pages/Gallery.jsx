@@ -1,7 +1,6 @@
 import React from "react";
 
 const Gallery = () => {
-
   const galleryImages = [
     {
       column: 1,
@@ -38,24 +37,24 @@ const Gallery = () => {
   ];
 
   return (
-    <section className=" bg-gray-50">
-      <div className="mx-auto px-6 ">
+    <section className="bg-amber-50">
+      <div className="mx-auto px-6">
         {/* Gallery Header */}
         <div className="relative isolate px-6 pt-14 lg:px-8">
-          <div className="mx-auto max-w-5xl py-28">
+          <div className="mx-auto max-w-5xl py-20">
             <div className="text-center">
-              <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 ">
-                Exlore some Amazing Moments
+              <h1 className="text-5xl font-semibold tracking-tight text-balance text-amber-900">
+                Explore Our Wildlife Gallery
               </h1>
-              {/* <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-                A hidden gem where nature thrives and birds find sanctuary.
-              </p> */}
+              <p className="mt-8 text-lg font-medium text-pretty text-amber-600 sm:text-xl/8">
+                A hidden gem where nature thrives and birds find sanctuary
+              </p>
             </div>
           </div>
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-16">
           {galleryImages.map((column, columnIndex) => (
             <div key={`column-${columnIndex}`} className="grid gap-6">
               {column.images.map((image, imageIndex) => (
@@ -69,11 +68,10 @@ const Gallery = () => {
                     className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                   />
-                  {/* <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-sm font-medium">{image.alt}</p>
-                    </div>
-                  </div> */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-sm font-medium">{image.alt}</p>
+                  </div>
                 </div>
               ))}
             </div>
