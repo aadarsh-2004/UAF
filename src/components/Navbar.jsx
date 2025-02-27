@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
+import hh from "../assets/hh.png"
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -18,10 +18,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex">
-            <div className="flex-shrink-0 flex items-center">
-              <div className="ml-3">
-                <div className="text-xl font-bold text-amber-900">Udaipur Animal Feed</div>
-                <div className="text-xs text-amber-600">Helping Paws, Saving Lives</div>
+            <div className="flex-shrink-0 flex items-center  ">
+              <div className=" flex ml-3 gap-3">
+                <img src={hh} alt="" w-4 h-4 className='bg-amber-950 w-12 h-12  ' />
+                <div>
+                  <div className="text-xl font-bold text-amber-900">Udaipur Animal Feed</div>
+                  <div className="text-xs text-amber-600">Helping Paws, Saving Lives</div>
+                </div>
               </div>
             </div>
           </div>
