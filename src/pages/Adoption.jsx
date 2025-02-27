@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Search, Filter, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const AdoptionPage = () => {
   const [filterOpen, setFilterOpen] = useState(false);
@@ -13,8 +14,9 @@ const AdoptionPage = () => {
       breed: "Labrador",
       type: "dog",
       image: "/api/placeholder/400/300",
-      description: "Friendly and energetic. Loves to play fetch and go for walks.",
-      status: "Available"
+      description:
+        "Friendly and energetic. Loves to play fetch and go for walks.",
+      status: "Available",
     },
     {
       id: 2,
@@ -23,8 +25,9 @@ const AdoptionPage = () => {
       breed: "Mixed",
       type: "cat",
       image: "/api/placeholder/400/300",
-      description: "Gentle and affectionate. Enjoys cuddles and peaceful environments.",
-      status: "Available"
+      description:
+        "Gentle and affectionate. Enjoys cuddles and peaceful environments.",
+      status: "Available",
     },
     {
       id: 3,
@@ -33,8 +36,9 @@ const AdoptionPage = () => {
       breed: "German Shepherd",
       type: "dog",
       image: "/api/placeholder/400/300",
-      description: "Intelligent and loyal. Well-trained and good with children.",
-      status: "Available"
+      description:
+        "Intelligent and loyal. Well-trained and good with children.",
+      status: "Available",
     },
     {
       id: 4,
@@ -44,7 +48,7 @@ const AdoptionPage = () => {
       type: "cat",
       image: "/api/placeholder/400/300",
       description: "Playful and curious. Loves to explore and play with toys.",
-      status: "Available"
+      status: "Available",
     },
     {
       id: 5,
@@ -54,7 +58,7 @@ const AdoptionPage = () => {
       type: "dog",
       image: "/api/placeholder/400/300",
       description: "Sweet and sociable. Gets along well with other animals.",
-      status: "Available"
+      status: "Available",
     },
     {
       id: 6,
@@ -63,22 +67,29 @@ const AdoptionPage = () => {
       breed: "Maine Coon",
       type: "cat",
       image: "/api/placeholder/400/300",
-      description: "Majestic and calm. Enjoys sitting on laps and being petted.",
-      status: "Available"
+      description:
+        "Majestic and calm. Enjoys sitting on laps and being petted.",
+      status: "Available",
     },
   ];
 
-  const filteredAnimals = activeFilter === "all" 
-    ? animals 
-    : animals.filter(animal => animal.type === activeFilter);
+  const filteredAnimals =
+    activeFilter === "all"
+      ? animals
+      : animals.filter((animal) => animal.type === activeFilter);
 
   return (
     <div className="bg-amber-50 min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 bg-amber-900 text-white">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Find Your Perfect Companion</h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Give a loving home to animals in need. Our adoption process ensures the best match for both you and your new family member.</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Find Your Perfect Companion
+          </h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Give a loving home to animals in need. Our adoption process ensures
+            the best match for both you and your new family member.
+          </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button className="bg-white text-amber-900 hover:bg-amber-100 py-3 px-8 rounded-full font-semibold transition-colors">
               Browse Animals
@@ -90,46 +101,28 @@ const AdoptionPage = () => {
         </div>
       </section>
 
-      {/* Search and Filter Section */}
+      {/* Animals Grid */}
       <section className="py-10 container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
-          <div className="relative w-full md:w-1/2">
-            <input 
-              type="text" 
-              placeholder="Search by name, breed, or age..." 
-              className="w-full py-3 px-12 rounded-full border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500"
-            />
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-500" size={20} />
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
+          <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow ">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-2">
+                <h3 className="text-xl font-bold text-amber-900">Cat</h3>
+              </div>
+            </div>
           </div>
-          
-          <div className="flex items-center gap-2 w-full md:w-auto">
-            <button 
-              onClick={() => setFilterOpen(!filterOpen)}
-              className="flex items-center gap-2 py-3 px-6 rounded-full bg-amber-100 hover:bg-amber-200 transition-colors"
-            >
-              <Filter size={18} />
-              <span>Filter</span>
-            </button>
-            
-            <div className={`flex gap-2 overflow-hidden transition-all duration-300 ${filterOpen ? 'max-w-md opacity-100' : 'max-w-0 opacity-0'}`}>
-              <button 
-                onClick={() => setActiveFilter("all")}
-                className={`py-2 px-4 rounded-full transition-colors ${activeFilter === "all" ? "bg-amber-800 text-white" : "bg-amber-100 hover:bg-amber-200"}`}
-              >
-                All
-              </button>
-              <button 
-                onClick={() => setActiveFilter("dog")}
-                className={`py-2 px-4 rounded-full transition-colors ${activeFilter === "dog" ? "bg-amber-800 text-white" : "bg-amber-100 hover:bg-amber-200"}`}
-              >
-                Dogs
-              </button>
-              <button 
-                onClick={() => setActiveFilter("cat")}
-                className={`py-2 px-4 rounded-full transition-colors ${activeFilter === "cat" ? "bg-amber-800 text-white" : "bg-amber-100 hover:bg-amber-200"}`}
-              >
-                Cats
-              </button>
+          <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-2">
+                <h3 className="text-xl font-bold text-amber-900">Dog</h3>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-2">
+                <h3 className="text-xl font-bold text-amber-900">Other</h3>
+              </div>
             </div>
           </div>
         </div>
@@ -137,13 +130,22 @@ const AdoptionPage = () => {
 
       {/* Animals Grid */}
       <section className="py-10 container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-amber-900 mb-8">Animals Available for Adoption</h2>
-        
+        <h2 className="text-3xl font-bold text-amber-900 mb-8">
+          Animals Available for Adoption
+        </h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredAnimals.map(animal => (
-            <div key={animal.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+          {filteredAnimals.map((animal) => (
+            <div
+              key={animal.id}
+              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
               <div className="relative">
-                <img src={animal.image} alt={animal.name} className="w-full h-64 object-cover" />
+                <img
+                  src={animal.image}
+                  alt={animal.name}
+                  className="w-full h-64 object-cover"
+                />
                 <div className="absolute top-4 right-4 bg-amber-100 text-amber-800 py-1 px-3 rounded-full text-sm font-semibold">
                   {animal.status}
                 </div>
@@ -151,13 +153,20 @@ const AdoptionPage = () => {
                   <Heart size={20} className="text-amber-600" />
                 </button>
               </div>
-              
+
               <div className="p-6">
                 <div className="flex justify-between items-center mb-2">
-                  <h3 className="text-xl font-bold text-amber-900">{animal.name}</h3>
-                  <span className="text-amber-700 font-medium">{animal.age}</span>
+                  <h3 className="text-xl font-bold text-amber-900">
+                    {animal.name}
+                  </h3>
+                  <span className="text-amber-700 font-medium">
+                    {animal.age}
+                  </span>
                 </div>
-                <p className="text-amber-600 mb-4">{animal.breed} • {animal.type.charAt(0).toUpperCase() + animal.type.slice(1)}</p>
+                <p className="text-amber-600 mb-4">
+                  {animal.breed} •{" "}
+                  {animal.type.charAt(0).toUpperCase() + animal.type.slice(1)}
+                </p>
                 <p className="text-gray-600 mb-6">{animal.description}</p>
                 <button className="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-lg font-semibold transition-colors">
                   Meet {animal.name}
@@ -171,39 +180,51 @@ const AdoptionPage = () => {
       {/* Adoption Process */}
       <section className="py-20 bg-amber-100">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-amber-900 mb-4 text-center">Our Adoption Process</h2>
+          <h2 className="text-3xl font-bold text-amber-900 mb-4 text-center">
+            Our Adoption Process
+          </h2>
           <p className="text-lg text-amber-700 mb-12 text-center max-w-3xl mx-auto">
-            We make adoption straightforward while ensuring our animals go to loving, suitable homes.
+            We make adoption straightforward while ensuring our animals go to
+            loving, suitable homes.
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               {
                 step: 1,
                 title: "Browse & Select",
-                description: "Look through our available animals and find one that connects with you."
+                description:
+                  "Look through our available animals and find one that connects with you.",
               },
               {
                 step: 2,
                 title: "Submit Application",
-                description: "Fill out our adoption application form with your information and living situation."
+                description:
+                  "Fill out our adoption application form with your information and living situation.",
               },
               {
                 step: 3,
                 title: "Meet & Greet",
-                description: "Schedule a time to visit and interact with your potential new family member."
+                description:
+                  "Schedule a time to visit and interact with your potential new family member.",
               },
               {
                 step: 4,
                 title: "Welcome Home",
-                description: "Complete the adoption process and welcome your new companion home."
-              }
-            ].map(process => (
-              <div key={process.step} className="bg-white p-6 rounded-lg shadow-md text-center">
+                description:
+                  "Complete the adoption process and welcome your new companion home.",
+              },
+            ].map((process) => (
+              <div
+                key={process.step}
+                className="bg-white p-6 rounded-lg shadow-md text-center"
+              >
                 <div className="w-12 h-12 bg-amber-800 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                   {process.step}
                 </div>
-                <h3 className="text-xl font-semibold text-amber-900 mb-3">{process.title}</h3>
+                <h3 className="text-xl font-semibold text-amber-900 mb-3">
+                  {process.title}
+                </h3>
                 <p className="text-amber-700">{process.description}</p>
               </div>
             ))}
@@ -216,18 +237,17 @@ const AdoptionPage = () => {
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Can't Adopt Right Now?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            You can still help our animals by donating, volunteering, or becoming a foster parent.
+            You can still help our animals by donating, volunteering, or
+            becoming a foster parent.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-white text-amber-800 hover:bg-amber-100 py-3 px-8 rounded-full font-semibold transition-colors">
+            <Link to={'/donation'} className="bg-white text-amber-800 hover:bg-amber-100 py-3 px-8 rounded-full font-semibold transition-colors">
               Donate Now
-            </button>
-            <button className="bg-transparent border-2 border-white hover:bg-white hover:text-amber-800 py-3 px-8 rounded-full font-semibold transition-colors">
+            </Link>
+            <Link to={'/vol'} className="bg-transparent border-2 border-white hover:bg-white hover:text-amber-800 py-3 px-8 rounded-full font-semibold transition-colors">
               Volunteer
-            </button>
-            <button className="bg-transparent border-2 border-white hover:bg-white hover:text-amber-800 py-3 px-8 rounded-full font-semibold transition-colors">
-              Foster
-            </button>
+            </Link>
+     
           </div>
         </div>
       </section>

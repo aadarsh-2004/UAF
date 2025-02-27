@@ -7,6 +7,7 @@ import ContactPage from "./pages/ContactPage";
 import About from "./pages/About";
 import Gallery from "./pages/Gallery";
 import AdoptionPage from "./pages/Adoption";
+import VolunteerPage from "./pages/Volunteer";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
         <Route path="/donation" element={<DonationPage />} />
         <Route path="/adoption" element={<AdoptionPage />} />
+        <Route path="/vol" element={<VolunteerPage />} />
 
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactPage />} />

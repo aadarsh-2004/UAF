@@ -1,48 +1,16 @@
 import React, { useState } from "react";
 import {
   Heart,
-  QrCode,
   Info,
   Check,
-  Copy,
-  Link,
+
   ChevronDown,
   ArrowRight,
-  Menu,
   X,
 } from "lucide-react";
 
 const DonationPage = () => {
-  const [paymentMethod, setPaymentMethod] = useState("upi");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [copiedText, setCopiedText] = useState("");
   const [activeQuestion, setActiveQuestion] = useState(null);
-  const [donationAmount, setDonationAmount] = useState(1000);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Contact", path: "/contact" },
-  ];
-
-  const upiId = "donate@upi";
-  const bankDetails = {
-    accountName: "Udaipur Animal Feed",
-    accountNumber: "1234567890",
-    ifsc: "BANK0001234",
-    bankName: "XYZ Bank",
-  };
-
-  const donationOptions = [
-    { amount: 500, description: "Feed 25 stray animals for a day" },
-    { amount: 1000, description: "Provide basic medical care for 5 animals" },
-    { amount: 2000, description: "Vaccinate 10 strays against rabies" },
-    { amount: 5000, description: "Fund an emergency surgery" },
-    { amount: 10000, description: "Support all programs for a week" },
-  ];
 
   const faqs = [
     {
@@ -122,7 +90,7 @@ const DonationPage = () => {
 
         {/* Donation Form Section */}
         <section id="donate-now" className="py-16 bg-amber-50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-amber-900 mb-4">
                 Make Your Contribution
@@ -134,237 +102,9 @@ const DonationPage = () => {
             </div>
 
             <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-5">
-                {/* Form */}
-                <div className="p-6 md:p-8 col-span-3">
-                  <h3 className="text-xl font-bold text-amber-900 mb-6">
-                    Select Donation Amount
-                  </h3>
-
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
-                    {donationOptions.map((option) => (
-                      <button
-                        key={option.amount}
-                        onClick={() => setDonationAmount(option.amount)}
-                        className={`p-3 rounded-lg border-2 transition-all ${
-                          donationAmount === option.amount
-                            ? "border-amber-600 bg-amber-50"
-                            : "border-gray-200 hover:border-amber-400"
-                        }`}
-                      >
-                        <div className="font-bold text-amber-800">
-                          ₹{option.amount}
-                        </div>
-                        <div className="text-xs text-gray-600">
-                          {option.description}
-                        </div>
-                      </button>
-                    ))}
-                    <div className="p-3 rounded-lg border-2 border-gray-200 flex flex-col justify-center">
-                      <input
-                        type="number"
-                        placeholder="Custom Amount"
-                        value={
-                          donationAmount !== 500 &&
-                          donationAmount !== 1000 &&
-                          donationAmount !== 2000 &&
-                          donationAmount !== 5000 &&
-                          donationAmount !== 10000
-                            ? donationAmount
-                            : ""
-                        }
-                        onChange={(e) =>
-                          setDonationAmount(parseInt(e.target.value) || 0)
-                        }
-                        className="w-full border-b border-gray-200 p-1 focus:outline-none focus:border-amber-600 text-amber-800 font-bold"
-                      />
-                      <div className="text-xs text-gray-600">Custom amount</div>
-                    </div>
-                  </div>
-
-                  <h3 className="text-xl font-bold text-amber-900 mb-4">
-                    Payment Methods
-                  </h3>
-
-                  <div className="flex border-b border-gray-200 mb-6">
-                    <button
-                      onClick={() => setPaymentMethod("upi")}
-                      className={`py-2 px-4 font-medium ${
-                        paymentMethod === "upi"
-                          ? "text-amber-800 border-b-2 border-amber-600"
-                          : "text-gray-500 hover:text-amber-600"
-                      }`}
-                    >
-                      UPI Payment
-                    </button>
-                    <button
-                      onClick={() => setPaymentMethod("bank")}
-                      className={`py-2 px-4 font-medium ${
-                        paymentMethod === "bank"
-                          ? "text-amber-800 border-b-2 border-amber-600"
-                          : "text-gray-500 hover:text-amber-600"
-                      }`}
-                    >
-                      Bank Transfer
-                    </button>
-                  </div>
-
-                  {paymentMethod === "upi" && (
-                    <div className="space-y-4">
-                      {/* UPI ID */}
-                      <div className="p-4 border border-amber-200 rounded-lg flex justify-between items-center bg-amber-50">
-                        <div>
-                          <h3 className="font-semibold text-amber-900">
-                            UPI ID
-                          </h3>
-                          <p className="text-amber-800">{upiId}</p>
-                        </div>
-                        <button
-                          onClick={() => copyToClipboard(upiId, "UPI ID")}
-                          className="text-amber-700 hover:text-amber-900 p-2 rounded-full hover:bg-amber-100 transition-colors"
-                        >
-                          {copiedText === "UPI ID" ? (
-                            <Check className="w-5 h-5" />
-                          ) : (
-                            <Copy className="w-5 h-5" />
-                          )}
-                        </button>
-                      </div>
-
-                      {/* QR Code */}
-                      <div className="p-4 border border-amber-200 rounded-lg bg-amber-50 text-center">
-                        <h3 className="font-semibold text-amber-900 mb-3">
-                          Scan QR Code to Donate ₹{donationAmount}
-                        </h3>
-                        <div className="bg-white p-4 rounded-lg shadow-md inline-block">
-                          <QrCode className="w-36 h-36 text-amber-800" />
-                        </div>
-                        <p className="mt-3 text-sm text-amber-700">
-                          Scan with any UPI app (GPay, PhonePe, Paytm, etc.)
-                        </p>
-                      </div>
-                    </div>
-                  )}
-
-                  {paymentMethod === "bank" && (
-                    <div className="p-4 border border-amber-200 rounded-lg bg-amber-50">
-                      <h3 className="font-semibold text-amber-900 mb-3">
-                        Bank Transfer Details
-                      </h3>
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <p className="text-amber-800">Account Name:</p>
-                          <div className="flex items-center">
-                            <span className="text-amber-800 font-medium mr-2">
-                              {bankDetails.accountName}
-                            </span>
-                            <button
-                              onClick={() =>
-                                copyToClipboard(
-                                  bankDetails.accountName,
-                                  "Account Name"
-                                )
-                              }
-                              className="text-amber-700 hover:text-amber-900"
-                            >
-                              {copiedText === "Account Name" ? (
-                                <Check className="w-4 h-4" />
-                              ) : (
-                                <Copy className="w-4 h-4" />
-                              )}
-                            </button>
-                          </div>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <p className="text-amber-800">Account Number:</p>
-                          <div className="flex items-center">
-                            <span className="text-amber-800 font-medium mr-2">
-                              {bankDetails.accountNumber}
-                            </span>
-                            <button
-                              onClick={() =>
-                                copyToClipboard(
-                                  bankDetails.accountNumber,
-                                  "Account Number"
-                                )
-                              }
-                              className="text-amber-700 hover:text-amber-900"
-                            >
-                              {copiedText === "Account Number" ? (
-                                <Check className="w-4 h-4" />
-                              ) : (
-                                <Copy className="w-4 h-4" />
-                              )}
-                            </button>
-                          </div>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <p className="text-amber-800">IFSC Code:</p>
-                          <div className="flex items-center">
-                            <span className="text-amber-800 font-medium mr-2">
-                              {bankDetails.ifsc}
-                            </span>
-                            <button
-                              onClick={() =>
-                                copyToClipboard(bankDetails.ifsc, "IFSC Code")
-                              }
-                              className="text-amber-700 hover:text-amber-900"
-                            >
-                              {copiedText === "IFSC Code" ? (
-                                <Check className="w-4 h-4" />
-                              ) : (
-                                <Copy className="w-4 h-4" />
-                              )}
-                            </button>
-                          </div>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <p className="text-amber-800">Bank Name:</p>
-                          <div className="flex items-center">
-                            <span className="text-amber-800 font-medium mr-2">
-                              {bankDetails.bankName}
-                            </span>
-                            <button
-                              onClick={() =>
-                                copyToClipboard(
-                                  bankDetails.bankName,
-                                  "Bank Name"
-                                )
-                              }
-                              className="text-amber-700 hover:text-amber-900"
-                            >
-                              {copiedText === "Bank Name" ? (
-                                <Check className="w-4 h-4" />
-                              ) : (
-                                <Copy className="w-4 h-4" />
-                              )}
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="mt-4 pt-4 border-t border-amber-200">
-                        <p className="text-sm text-amber-700">
-                          After completing your bank transfer, please email the
-                          transaction details to{" "}
-                          <span className="font-medium">
-                            donate@udaipuranimalfeed.org
-                          </span>{" "}
-                          to receive your donation receipt.
-                        </p>
-                      </div>
-                    </div>
-                  )}
-
-                  <button
-                    onClick={handleDonation}
-                    className="mt-8 w-full bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300"
-                  >
-                    Complete Donation of ₹{donationAmount}
-                  </button>
-                </div>
-
+              <div className="grid grid-cols-1">
                 {/* Sidebar */}
-                <div className="col-span-2 bg-amber-100 p-6 md:p-8">
+                <div className=" bg-amber-100 p-6 md:p-8">
                   <h2 className="text-2xl font-bold text-amber-800 mb-6">
                     Your Impact
                   </h2>
@@ -617,32 +357,6 @@ const DonationPage = () => {
           </div>
         </section>
       </main>
-
-      {/* Thank You Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg max-w-md w-full p-8 text-center">
-            <Heart className="h-16 w-16 mx-auto text-amber-600 mb-4" />
-            <h3 className="text-2xl font-bold text-amber-800 mb-3">
-              Thank You for Your Generosity!
-            </h3>
-            <p className="text-amber-700 mb-6">
-              Your donation of ₹{donationAmount} will make a real difference in
-              the lives of Udaipur's street animals. We've sent a confirmation
-              receipt to your email.
-            </p>
-            <p className="text-sm text-amber-600 mb-6">
-              Transaction ID: UAF-{Math.floor(Math.random() * 900000) + 100000}
-            </p>
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
