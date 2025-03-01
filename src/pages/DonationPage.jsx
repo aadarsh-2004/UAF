@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Heart,
-  Info,
-  Check,
-
-  ChevronDown,
-  ArrowRight,
-  X,
-} from "lucide-react";
+import { Heart, Info, Check, ChevronDown, ArrowRight, X } from "lucide-react";
 
 const DonationPage = () => {
   const [activeQuestion, setActiveQuestion] = useState(null);
@@ -40,10 +32,9 @@ const DonationPage = () => {
     },
   ];
 
-  const copyToClipboard = (text, label) => {
+  const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
-    setCopiedText(label);
-    setTimeout(() => setCopiedText(""), 2000);
+    alert("Copied to clipboard!");
   };
 
   const toggleFaq = (index) => {
@@ -53,72 +44,72 @@ const DonationPage = () => {
       setActiveQuestion(index);
     }
   };
+  const [activeTab, setActiveTab] = useState("upi");
 
-  const handleDonation = () => {
-    setIsModalOpen(true);
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-amber-50">
+    <div className="min-h-screen flex flex-col bg-amber-50/30">
       <main className="flex-grow">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-r from-amber-800 to-amber-600 text-white py-20">
+        <section className="relative py-20 text-white h-[619px]">
+          {/* Background Image */}
           <div
-            className="absolute inset-0 opacity-20 bg-cover bg-center"
-            style={{ backgroundImage: `url('/api/placeholder/1920/600')` }}
+            className="absolute inset-0 bg-cover bg-center z-0"
+            style={{
+              backgroundImage: "url('/images/donationheeadimg.webp')",
+              filter: "brightness(0.3)",
+            }}
           ></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <Heart className="h-16 w-16 mx-auto text-amber-300 mb-4" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+
+          {/* Amber Overlay for Brand Consistency */}
+          <div className="absolute inset-0 bg-amber-950 opacity-30 z-1"></div>
+
+          {/* Content Container */}
+          <div className="container mx-auto px-6 text-center top-24 relative z-10">
+            <h1 className="text-3xl md:text-6xl font-bold mb-4">
               Every Gift Makes a Difference
             </h1>
-            <p className="text-xl max-w-3xl mx-auto mb-8">
+            <p className="text-md max-w-3xl mx-auto mb-8">
               Your donation helps us provide food, shelter, and medical care to
               stray animals in Udaipur. Every contribution creates a better life
               for animals in need.
             </p>
-            <div className="inline-flex items-center justify-center">
-              <a
-                href="#donate-now"
-                className="bg-white text-amber-800 hover:bg-amber-100 font-bold py-3 px-8 rounded-full transition-colors duration-300 flex items-center"
-              >
-                Donate Now <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-            </div>
           </div>
-        </div>
+        </section>
 
-        {/* Donation Form Section */}
-        <section id="donate-now" className="py-16 bg-amber-50">
+        <section id="donate-now" className="py-16 bg-amber-50/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-amber-900 mb-4">
+              <h2 className="text-3xl md:text-5xl font-bold text-amber-950 mb-4">
                 Make Your Contribution
               </h2>
-              <p className="text-lg text-amber-700 max-w-3xl mx-auto">
+              <p className="text-lg text-amber-950 max-w-3xl mx-auto">
                 Choose your preferred donation method and amount. Every rupee
                 counts towards creating a better life for stray animals.
               </p>
             </div>
 
             <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-              <div className="grid grid-cols-1">
-                {/* Sidebar */}
-                <div className=" bg-amber-100 p-6 md:p-8">
-                  <h2 className="text-2xl font-bold text-amber-800 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                {/* Left Sidebar - Impact Information */}
+                <div className="bg-amber-50 p-6 md:p-8">
+                  <h2 className="text-2xl font-bold text-amber-950 mb-6">
                     Your Impact
                   </h2>
 
                   <div className="space-y-4 mb-8">
                     <div className="flex items-start">
                       <Check className="h-5 w-5 text-amber-600 mr-3 mt-1" />
-                      <p className="text-amber-800">
+                      <p className="text-amber-950">
                         ₹500 can feed 25 stray animals for a day
                       </p>
                     </div>
                     <div className="flex items-start">
                       <Check className="h-5 w-5 text-amber-600 mr-3 mt-1" />
-                      <p className="text-amber-800">
+                      <p className="text-amber-950">
                         ₹1,000 can provide basic medical care for 5 animals
                       </p>
                     </div>
@@ -135,7 +126,6 @@ const DonationPage = () => {
                       </p>
                     </div>
                   </div>
-
                   <div className="bg-white rounded-lg p-4 mb-6">
                     <div className="flex items-start">
                       <Info className="h-5 w-5 text-amber-600 mr-3 mt-1 flex-shrink-0" />
@@ -151,8 +141,7 @@ const DonationPage = () => {
                       </div>
                     </div>
                   </div>
-
-                  <div className="bg-amber-800 text-white rounded-lg p-4">
+                  <div className="bg-amber-950 text-white rounded-lg p-4">
                     <h3 className="font-semibold mb-2">Need Help?</h3>
                     <p className="text-sm mb-3">
                       For assistance with your donation or to explore other ways
@@ -163,6 +152,134 @@ const DonationPage = () => {
                       Email: donate@udaipuranimalfeed.org
                     </p>
                   </div>
+                </div>
+
+                {/* Right Side - Payment Options */}
+                <div className="p-6 md:p-8 border-t md:border-t-0 md:border-l border-amber-100">
+                  <h2 className="text-2xl font-bold text-amber-950 mb-6">
+                    Payment Options
+                  </h2>
+
+                  {/* Payment Methods Tabs */}
+                  <div className="mb-8">
+                    <div className="flex border-b border-amber-200">
+                      <button
+                        onClick={() => handleTabClick("upi")}
+                        className={`px-4 py-2 ${
+                          activeTab === "upi"
+                            ? "border-b-2 border-amber-600 text-amber-800 font-medium"
+                            : "text-amber-700 font-medium"
+                        }`}
+                      >
+                        UPI Payment
+                      </button>
+                      <button
+                        onClick={() => handleTabClick("qr")}
+                        className={`px-4 py-2 ${
+                          activeTab === "qr"
+                            ? "border-b-2 border-amber-600 text-amber-800 font-medium"
+                            : "text-amber-700 font-medium"
+                        }`}
+                      >
+                        QR Code
+                      </button>
+                      <button
+                        onClick={() => handleTabClick("bank")}
+                        className={`px-4 py-2 ${
+                          activeTab === "bank"
+                            ? "border-b-2 border-amber-600 text-amber-800 font-medium"
+                            : "text-amber-700 font-medium"
+                        }`}
+                      >
+                        Bank Transfer
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* UPI Payment Option */}
+                  {activeTab === "upi" && (
+                    <div className="py-6">
+                      <div className="bg-amber-50 rounded-lg p-6 text-center">
+                        <h3 className="text-lg font-semibold text-amber-800 mb-3">
+                          UPI ID
+                        </h3>
+                        <div className="bg-white border border-amber-200 rounded-lg p-3 mb-4">
+                          <p className="text-lg font-medium text-amber-900">
+                            udaipuranimal@ybl
+                          </p>
+                        </div>
+                        <button
+                          onClick={() => copyToClipboard("udaipuranimal@ybl")}
+                          className="bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-lg transition-colors"
+                        >
+                          Copy UPI ID
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* QR Code Option */}
+                  {activeTab === "qr" && (
+                    <div className="py-6">
+                      <div className="bg-amber-50 rounded-lg p-6 text-center">
+                        <h3 className="text-lg font-semibold text-amber-800 mb-3">
+                          Scan QR Code
+                        </h3>
+                        <div className="bg-white p-2 rounded-lg inline-block border border-amber-200">
+                          <img
+                            src="/qr-code-placeholder.png"
+                            alt="QR Code"
+                            className="w-48 h-48 mx-auto"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Bank Transfer Option */}
+                  {activeTab === "bank" && (
+                    <div className="py-6">
+                      <div className="bg-amber-50 rounded-lg p-6">
+                        <h3 className="text-lg font-semibold text-amber-800 mb-3">
+                          Bank Account Details
+                        </h3>
+                        <div className="space-y-3 mb-4">
+                          <div className="flex justify-between">
+                            <span className="text-amber-700">
+                              Account Name:
+                            </span>
+                            <span className="font-medium text-amber-900">
+                              Udaipur Animal Feed Foundation
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-amber-700">
+                              Account Number:
+                            </span>
+                            <span className="font-medium text-amber-900">
+                              1234567890123
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-amber-700">IFSC Code:</span>
+                            <span className="font-medium text-amber-900">
+                              SBIN0001234
+                            </span>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() =>
+                            copyToClipboard(
+                              "Udaipur Animal Feed Foundation, Acc No: 1234567890123, IFSC: SBIN0001234"
+                            )
+                          }
+                          className="bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-lg transition-colors"
+                        >
+                          Copy Account Details
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -185,9 +302,9 @@ const DonationPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-amber-50 rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
                 <img
-                  src="/api/placeholder/600/400"
+                  src="/public/images/sm1.jpg"
                   alt="Feeding program"
-                  className="w-full h-48 object-cover"
+                  className="w-full h-auto max-h-72 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-amber-800 mb-3">
@@ -202,9 +319,9 @@ const DonationPage = () => {
 
               <div className="bg-amber-50 rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
                 <img
-                  src="/api/placeholder/600/400"
+                  src="/public/images/sm2.jpg"
                   alt="Medical care"
-                  className="w-full h-48 object-cover"
+                  className="w-full h-auto max-h-72 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-amber-800 mb-3">
@@ -219,9 +336,9 @@ const DonationPage = () => {
 
               <div className="bg-amber-50 rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
                 <img
-                  src="/api/placeholder/600/400"
+                  src="/public/images/sm3.jpg"
                   alt="Community education"
-                  className="w-full h-48 object-cover"
+                  className="w-full h-auto max-h-72 object-cover "
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-amber-800 mb-3">

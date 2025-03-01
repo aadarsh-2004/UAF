@@ -9,8 +9,9 @@ import {
   FileText,
   Check,
   Zap,
-  X
+  X,
 } from "lucide-react";
+import VolunteerShowcase from "../components/VolunteerShowcase";
 
 const VolunteerPage = () => {
   const [showFAQ, setShowFAQ] = useState(null);
@@ -169,11 +170,25 @@ const VolunteerPage = () => {
   ];
 
   return (
-    <div className="bg-amber-50 min-h-screen">
+    <div className="bg-amber-50/5 min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-amber-900 text-white">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      
+      <section className="relative py-20 text-white h-[619px]">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{
+            backgroundImage: "url('/images/volheadimg.jpg')",
+            filter: "brightness(0.5)",
+          }}
+        ></div>
+
+        {/* Amber Overlay for Brand Consistency */}
+        <div className="absolute inset-0 bg-amber-950 opacity-20 z-1"></div>
+
+        {/* Content Container */}
+        <div className="container mx-auto px-6 text-center top-24 relative z-10">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Join Our Volunteer Family
           </h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -182,7 +197,7 @@ const VolunteerPage = () => {
           </p>
           <button
             onClick={handleOpenModal}
-            className="bg-white text-amber-900 hover:bg-amber-100 py-3 px-8 rounded-full font-semibold transition-colors"
+            className="bg-white text-amber-950 hover:bg-amber-100 py-3 px-8 rounded-full font-semibold transition-colors shadow-lg"
           >
             Apply Now
           </button>
@@ -192,7 +207,7 @@ const VolunteerPage = () => {
       {/* Why Volunteer Section */}
       <section className="py-16 container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-amber-900 mb-4">
+          <h2 className="text-3xl font-bold text-amber-950 mb-4">
             Why Volunteer With Us?
           </h2>
           <p className="text-lg text-amber-700 max-w-3xl mx-auto">
@@ -202,11 +217,11 @@ const VolunteerPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-8 rounded-lg shadow-md text-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
             <div className="mb-4 flex justify-center">
               <Award className="w-16 h-16 text-amber-600" />
             </div>
-            <h3 className="text-xl font-semibold text-amber-900 mb-3">
+            <h3 className="text-xl font-semibold text-amber-950 mb-3">
               Recognition & Certification
             </h3>
             <ul className="text-amber-700 text-left">
@@ -252,7 +267,7 @@ const VolunteerPage = () => {
             <div className="mb-4 flex justify-center">
               <FileText className="w-16 h-16 text-amber-600" />
             </div>
-            <h3 className="text-xl font-semibold text-amber-900 mb-3">
+            <h3 className="text-xl font-semibold text-amber-950 mb-3">
               Professional Development
             </h3>
             <ul className="text-amber-700 text-left">
@@ -299,7 +314,7 @@ const VolunteerPage = () => {
             <div className="mb-4 flex justify-center">
               <Zap className="w-16 h-16 text-amber-600" />
             </div>
-            <h3 className="text-xl font-semibold text-amber-900 mb-3">
+            <h3 className="text-xl font-semibold text-amber-950 mb-3">
               Personal Benefits
             </h3>
             <ul className="text-amber-700 text-left">
@@ -342,10 +357,10 @@ const VolunteerPage = () => {
       </section>
 
       {/* Volunteer Roles */}
-      <section className="py-16 bg-amber-100">
+      <section className="py-16 bg-amber-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-amber-900 mb-4">
+            <h2 className="text-3xl font-bold text-amber-950 mb-4">
               Volunteer Opportunities
             </h2>
             <p className="text-lg text-amber-700 max-w-3xl mx-auto">
@@ -358,7 +373,7 @@ const VolunteerPage = () => {
             {volunteerRoles.map((role, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md">
                 <div className="mb-4">{role.icon}</div>
-                <h3 className="text-xl font-semibold text-amber-900 mb-2">
+                <h3 className="text-xl font-semibold text-amber-950 mb-2">
                   {role.title}
                 </h3>
                 <div className="flex items-center mb-3 text-amber-700">
@@ -375,7 +390,7 @@ const VolunteerPage = () => {
       {/* How to Become a Volunteer */}
       <section className="py-16 container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-amber-900 mb-4">
+          <h2 className="text-3xl font-bold text-amber-950 mb-4">
             How to Become a Volunteer
           </h2>
           <p className="text-lg text-amber-700 max-w-3xl mx-auto">
@@ -435,7 +450,7 @@ const VolunteerPage = () => {
                 )}
               </div>
               <div className="flex-1 pt-2">
-                <h3 className="text-xl font-semibold text-amber-900 mb-2">
+                <h3 className="text-xl font-semibold text-amber-950 mb-2">
                   Step {step.step}: {step.title}
                 </h3>
                 <p className="text-amber-700">{step.description}</p>
@@ -447,67 +462,18 @@ const VolunteerPage = () => {
         <div className="text-center mt-12">
           <button
             onClick={handleOpenModal}
-            className="bg-amber-800 hover:bg-amber-900 text-white py-3 px-8 rounded-full font-semibold transition-colors"
+            className="bg-amber-900 hover:bg-amber-950 text-white py-3 px-8 rounded-full font-semibold transition-colors"
           >
             Start Your Application Today
           </button>
         </div>
       </section>
 
-      {/* Volunteer Testimonials */}
-      <section className="py-16 bg-amber-800 text-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What Our Volunteers Say</h2>
-            <p className="text-lg max-w-3xl mx-auto">
-              Hear from the people who have made a difference in animals' lives
-              through volunteering.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sarah M.",
-                role: "Animal Care Assistant",
-                quote:
-                  "Volunteering here has been the highlight of my week for the past year. I've gained so much confidence and practical skills, and the certificate I received helped me secure a job at a veterinary clinic.",
-                duration: "Volunteer for 1+ years",
-              },
-              {
-                name: "Michael T.",
-                role: "Event Coordinator",
-                quote:
-                  "As a business student, the event planning experience I've gained is invaluable. The leadership opportunity and recommendation letter from the NGO director helped strengthen my resume tremendously.",
-                duration: "Volunteer for 9 months",
-              },
-              {
-                name: "Priya K.",
-                role: "Community Outreach",
-                quote:
-                  "The professional development workshops helped me improve my public speaking skills. I've made amazing connections and received a service award that I proudly featured in my college applications.",
-                duration: "Volunteer for 2+ years",
-              },
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-amber-700 p-6 rounded-lg">
-                <p className="mb-4 italic">"{testimonial.quote}"</p>
-                <div>
-                  <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-amber-200">{testimonial.role}</p>
-                  <p className="text-amber-300 text-sm">
-                    {testimonial.duration}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <VolunteerShowcase />
       {/* FAQs */}
       <section className="py-16 container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-amber-900 mb-4">
+          <h2 className="text-3xl font-bold text-amber-950 mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-amber-700 max-w-3xl mx-auto">
@@ -522,7 +488,7 @@ const VolunteerPage = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full text-left bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex justify-between items-center"
               >
-                <span className="font-semibold text-amber-900">
+                <span className="font-semibold text-amber-950">
                   {faq.question}
                 </span>
                 <span className="text-amber-600 text-xl">
@@ -539,37 +505,12 @@ const VolunteerPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-amber-100">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-amber-900 mb-4">
-            Ready to Make a Difference?
-          </h2>
-          <p className="text-lg text-amber-700 mb-8 max-w-2xl mx-auto">
-            Join our team of dedicated volunteers and help create a better world
-            for animals in need.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button
-              onClick={handleOpenModal}
-              className="bg-amber-800 hover:bg-amber-900 text-white py-3 px-8 rounded-full font-semibold transition-colors"
-            >
-              Apply as a Volunteer
-            </button>
-            <button
-              onClick={handleOpenModal}
-              className="bg-white text-amber-800 hover:bg-amber-200 py-3 px-8 rounded-full font-semibold transition-colors"
-            >
-              Request More Information
-            </button>
-          </div>
-        </div>
-      </section>
+      
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-lg">
             <div className="flex justify-between items-center p-6 border-b border-gray-200">
-              <h3 className="text-xl font-semibold text-amber-900">
+              <h3 className="text-xl font-semibold text-amber-950">
                 Volunteer Application
               </h3>
               <button
@@ -709,7 +650,7 @@ const VolunteerPage = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-amber-800 text-white rounded-lg hover:bg-amber-900"
+                  className="px-4 py-2 bg-amber-800 text-white rounded-lg hover:bg-amber-950"
                 >
                   Submit Application
                 </button>

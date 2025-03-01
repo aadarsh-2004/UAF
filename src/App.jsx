@@ -8,6 +8,9 @@ import About from "./pages/About";
 import Gallery from "./pages/Gallery";
 import AdoptionPage from "./pages/Adoption";
 import VolunteerPage from "./pages/Volunteer";
+import PressMentions from "./pages/PressMentions";
+import Sponsors from "./pages/Sponsors";
+import Financials from "./pages/Financials";
 
 
 function App() {
@@ -24,6 +27,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/press" element={<PressMentions />} />
+        <Route path="/sponsor" element={<Sponsors />} />
+        <Route path="/financials" element={<Financials />} />
 
       </Routes>
       <Footer />
