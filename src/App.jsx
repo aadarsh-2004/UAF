@@ -8,11 +8,15 @@ import About from "./pages/About";
 import Gallery from "./pages/Gallery";
 import AdoptionPage from "./pages/Adoption";
 import VolunteerPage from "./pages/Volunteer";
-
+import ScrollToTop from "./utils/scrollTop";
+import Abs from "./components/AboutPage";
+import AboutPage from "./pages/About";
+import FounderPage from "./components/FounderPage";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -20,11 +24,11 @@ function App() {
         <Route path="/donation" element={<DonationPage />} />
         <Route path="/adoption" element={<AdoptionPage />} />
         <Route path="/vol" element={<VolunteerPage />} />
+        <Route path="/about" element={<Abs />} />
 
-        <Route path="/about" element={<About />} />
+        <Route path="/abs" element={<FounderPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/gallery" element={<Gallery />} />
-
       </Routes>
       <Footer />
     </Router>
