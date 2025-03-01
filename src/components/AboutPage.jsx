@@ -34,10 +34,6 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-      <div className="relative">
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-      </div>
 
       {/* Our Story Section */}
       <section className="py-16 md:py-24">

@@ -29,16 +29,13 @@ const FounderPage = () => {
         </div>
       </div> */}
 
-      <div className="relative">
-        {/* Overlay */}
+      {/* <div className="relative">
         <div className="absolute inset-0 bg-black opacity-50"></div>
 
-        {/* Hero Section */}
         <div
           className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[615px] w-full flex items-center justify-start bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${founderHeroImage})` }}
         >
-          {/* Text Container */}
           <div className="max-w-7xl px-4 sm:px-6 lg:px-10 xl:pl-20 text-left py-12 md:py-16 lg:py-20">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
               <span className="block">Founders</span>
@@ -48,9 +45,27 @@ const FounderPage = () => {
             </h1>
           </div>
         </div>
+      </div> */}
+
+      <div className="relative">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${founderHeroImage})` }}
+        ></div>
+
+        <div className="absolute inset-0 bg-black opacity-70"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+          <div className="text-left">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              Founders
+            </h1>
+            <p className="text-xl md:text-2xl mx-auto text-white">Name</p>
+            <p className="text-xl md:text-2xl mx-auto text-white">Name</p>
+          </div>
+        </div>
       </div>
 
-      {/* Founder Story Section */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">

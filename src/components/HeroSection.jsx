@@ -8,8 +8,10 @@ const HeroSection = () => (
 
     {/* Hero Section */}
     <div
-      className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[615px] w-full flex items-center justify-start bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${PetHero})` }}
+      className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[615px] w-full flex items-center justify-start bg-amber-900 md:bg-cover md:bg-center md:bg-no-repeat"
+      style={{
+        backgroundImage: `@media (min-width: 768px) { url(${PetHero}) }`,
+      }}
     >
       {/* Text Container */}
       <div className="max-w-7xl px-4 sm:px-6 lg:px-10 xl:pl-20 text-left py-12 md:py-16 lg:py-20">
