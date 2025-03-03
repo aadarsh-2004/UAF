@@ -50,14 +50,14 @@ const ContactPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-amber-50">
+    <div className="min-h-screen bg-amber-50/20">
       {/* Hero Section */}
-      <section className="relative py-28 bg-amber-800 text-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-700 to-amber-900" />
+      <section className="relative py-28 bg-[#181212] text-white">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#181212] to-[#181212]" />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-5xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold">Get in Touch</h1>
-            <p className="text-xl text-amber-100">
+            <h1 className="text-4xl md:text-7xl font-bold">Get in Touch</h1>
+            <p className="text-lg md:text-xl text-amber-100">
               Have questions? We'd love to hear from you. Send us a message and
               we'll respond as soon as possible.
             </p>

@@ -206,7 +206,7 @@ const StoriesSection = () => {
   };
 
   return (
-    <section className="py-16 bg-amber-100">
+    <section className="py-16 bg-amber-50/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-amber-800 mb-4">
@@ -398,144 +398,187 @@ const TestimonialSection = () => (
   </section>
 );
 
-const ImageCarousel = () => {
-  // Sample image data - replace with your actual images
-  const images = [
+
+
+
+const NewsClippingCarousel = () => {
+  // Sample news clippings data - replace with your actual content
+  const newsClippings = [
     {
-      src: "/images/1.jpg",
-      alt: "Rescued street dog recovering at UAF shelter",
-      caption: "Recovery in progress: Rescued street dog at our shelter",
+      src: "/images/Newsimg1.jpg",
+      alt: "UAF shelter rescues 50 dogs during monsoon",
+      headline: "Local NGO saves 50 street dogs during heavy monsoon",
+      source: "Udaipur Times",
+      date: "June 15, 2024"
     },
     {
-      src: "/images/2.jpg",
-      alt: "Volunteers feeding street animals",
-      caption: "Our volunteers distributing food to street animals",
+      src: "/images/Newsimg2.jpg",
+      alt: "Vaccination drive reaches 500 street animals",
+      headline: "Mass vaccination drive protects 500 street animals",
+      source: "Rajasthan Post",
+      date: "March 8, 2024"
     },
     {
-      src: "/images/3.png",
-      alt: "Veterinary care for injured cat",
-      caption: "Providing medical care to an injured street cat",
+      src: "/images/Newsimg3.jpg",
+      alt: "Corporate partnership funds new shelter expansion",
+      headline: "Local business funds shelter expansion for street animals",
+      source: "Business Standard",
+      date: "January 22, 2024"
     },
     {
-      src: "/images/1.jpg",
-      alt: "Educational workshop with school children",
-      caption: "Teaching compassion: Educational workshop with local students",
-    },
+      src: "/images/Newsimg4.jpg",
+      alt: "Educational program reaches 20 schools",
+      headline: "Animal welfare education program expands to 20 local schools",
+      source: "Education Weekly",
+      date: "April 30, 2024"
+    }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Auto-advance carousel
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000); // Change image every 4 seconds
+      nextClipping();
+    }, 6000); // Change clipping every 6 seconds (longer to allow reading)
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, []);
 
-  // Handle manual navigation
-  const goToImage = (index) => {
-    setCurrentIndex(index);
+  // Handle transition effects
+  const nextClipping = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % newsClippings.length);
+      setIsTransitioning(false);
+    }, 500);
   };
 
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  const prevClipping = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + newsClippings.length) % newsClippings.length);
+      setIsTransitioning(false);
+    }, 500);
   };
 
-  const goToPrev = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+  const goToClipping = (index) => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex(index);
+      setIsTransitioning(false);
+    }, 500);
   };
 
   return (
     <section className="py-16 bg-amber-50">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 ">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-amber-800 mb-4">
-            Our Impact in Pictures
+            Our Impact in the News
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            See how we're making a difference for street animals across Udaipur.
+            See how our work for street animals has been recognized across media outlets.
           </p>
         </div>
 
-        <div className="relative overflow-hidden rounded-xl shadow-xl">
-          {/* Image container with transition */}
-          <div className="relative h-40 md:h-48 bg-gray-100">
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${
-                  index === currentIndex ? "opacity-100" : "opacity-0"
-                }`}
-                style={{ zIndex: index === currentIndex ? 10 : 0 }}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent py-2 px-4 text-white">
-                  <p className="text-xs md:text-sm">{image.caption}</p>
+        <div className="relative mx-auto max-w-4xl">
+          {/* News clipping container */}
+          <div className="bg-white rounded-xl shadow-xl overflow-hidden p-4 md:p-6 min-h-64 relative">
+            {/* Paper texture overlay for news clipping feel */}
+            <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-10"></div>
+            
+            {/* News clipping content */}
+            <div className={`transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+              <div className="flex flex-col md:flex-row gap-6 items-center">
+                {/* Image container with flexible size */}
+                <div className="w-full md:w-2/5 flex-shrink-0">
+                  <div className="relative bg-gray-200 rounded-lg overflow-hidden shadow-md" style={{paddingBottom: '75%'}}>
+                    <img
+                      src={newsClippings[currentIndex].src}
+                      alt={newsClippings[currentIndex].alt}
+                      className="absolute inset-0 w-auto h-auto object-cover"
+                    />
+                  </div>
+                </div>
+                
+                {/* Content container */}
+                <div className="w-full md:w-3/5 space-y-3">
+                  <div className="border-b-2 border-amber-500 pb-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-800">
+                      {newsClippings[currentIndex].headline}
+                    </h3>
+                  </div>
+                  
+                  <div className="flex items-center justify-between text-sm text-gray-600">
+                    <span className="font-semibold">{newsClippings[currentIndex].source}</span>
+                    <span>{newsClippings[currentIndex].date}</span>
+                  </div>
+                  
+                  {/* Additional news content placeholder */}
+                  <p className="text-gray-700 leading-relaxed">
+                    Our organization's recent efforts have made a significant impact on street animals in Udaipur. 
+                    Through dedicated volunteer work and community support, we've been able to rescue, treat, and rehome 
+                    countless animals in need.
+                  </p>
                 </div>
               </div>
-            ))}
+            </div>
+            
+            {/* Navigation arrows - positioned wider for better usability */}
+            <button
+              onClick={prevClipping}
+              className="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-amber-600 hover:bg-amber-700 text-white rounded-full p-2 shadow-md z-20"
+              aria-label="Previous news clipping"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+            <button
+              onClick={nextClipping}
+              className="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-amber-600 hover:bg-amber-700 text-white rounded-full p-2 shadow-md z-20"
+              aria-label="Next news clipping"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
           </div>
 
-          {/* Navigation arrows */}
-          <button
-            onClick={goToPrev}
-            className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-1 z-20"
-            aria-label="Previous image"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-          <button
-            onClick={goToNext}
-            className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-1 z-20"
-            aria-label="Next image"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-
           {/* Navigation dots */}
-          <div className="absolute bottom-1 left-0 right-0 flex justify-center space-x-1 z-20">
-            {images.map((_, index) => (
+          <div className="mt-6 flex justify-center space-x-2">
+            {newsClippings.map((_, index) => (
               <button
                 key={index}
-                onClick={() => goToImage(index)}
-                className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${
-                  index === currentIndex ? "bg-white" : "bg-white/50"
+                onClick={() => goToClipping(index)}
+                className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
+                  index === currentIndex ? "bg-amber-600" : "bg-amber-200"
                 }`}
-                aria-label={`View image ${index + 1}`}
+                aria-label={`View news clipping ${index + 1}`}
               />
             ))}
           </div>
@@ -544,6 +587,8 @@ const ImageCarousel = () => {
     </section>
   );
 };
+
+
 
 const LandingPage = () => {
   return (
@@ -556,7 +601,7 @@ const LandingPage = () => {
         <ProgramsSection />
         <CallToAction />
         <TestimonialSection />
-        <ImageCarousel />
+        <NewsClippingCarousel />
       </main>
     </div>
   );

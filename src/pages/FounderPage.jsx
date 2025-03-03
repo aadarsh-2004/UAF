@@ -46,23 +46,115 @@ const FounderPage = () => {
           </div>
         </div>
       </div> */}
-
-      <div className="relative">
+      <div className="relative overflow-hidden">
+        {/* Background Image with subtle zoom effect */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transition-transform duration-3000"
           style={{ backgroundImage: `url(${founderHeroImage})` }}
         ></div>
 
-        <div className="absolute inset-0 bg-black opacity-70"></div>
+        {/* Gradient Overlay instead of flat opacity */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/60"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
-          <div className="text-left">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Founders
+        {/* Content Container */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-36">
+          <div className="max-w-3xl">
+            {/* Section Label */}
+            <span className="inline-block px-3 py-1 bg-amber-500/90 text-white text-sm font-medium rounded mb-4">
+              Our Leadership
+            </span>
+
+            {/* Main Heading */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
+              Meet the <span className="text-amber-400">Visionaries</span>{" "}
+              Behind Our Mission
             </h1>
-            <p className="text-xl md:text-2xl mx-auto text-white">Name</p>
-            <p className="text-xl md:text-2xl mx-auto text-white">Name</p>
+
+            {/* Founders Introduction */}
+            <p className="text-lg text-gray-200 mb-10">
+              Driven by compassion and dedication, our founders have transformed
+              a small initiative into a leading animal welfare organization in
+              Udaipur.
+            </p>
+
+            {/* Founders Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 transform transition-transform hover:scale-105">
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 rounded-full bg-amber-500/20 flex items-center justify-center">
+                    <span className="text-amber-400 text-2xl font-bold">
+                      DP
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">Name</h3>
+                    <p className="text-amber-400 font-medium">
+                      Co-Founder & Director
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 transform transition-transform hover:scale-105">
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 rounded-full bg-amber-500/20 flex items-center justify-center">
+                    <span className="text-amber-400 text-2xl font-bold">
+                      AS
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">Name</h3>
+                    <p className="text-amber-400 font-medium">
+                      Co-Founder & President
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="mt-10">
+              <a
+                href="#founder-stories"
+                className="inline-flex items-center text-white group"
+              >
+                <span className="mr-2 group-hover:underline">
+                  Learn about their journey
+                </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="group-hover:translate-x-1 transition-transform"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
+        </div>
+
+        {/* Decorative Element */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="w-full h-auto text-white"
+          >
+            <path
+              fill="currentColor"
+              fillOpacity="0.1"
+              d="M0,160L48,170.7C96,181,192,203,288,181.3C384,160,480,96,576,74.7C672,53,768,75,864,96C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            ></path>
+          </svg>
         </div>
       </div>
 

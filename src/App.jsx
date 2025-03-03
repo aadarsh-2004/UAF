@@ -4,14 +4,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ContactPage from "./pages/ContactPage";
-import About from "./pages/About";
 import Gallery from "./pages/Gallery";
 import AdoptionPage from "./pages/Adoption";
 import VolunteerPage from "./pages/Volunteer";
+import PressMentions from "./pages/PressMentions";
+import Sponsors from "./pages/Sponsors";
+import Financials from "./pages/Financials";
 import ScrollToTop from "./utils/scrollTop";
-import Abs from "./components/AboutPage";
-import AboutPage from "./pages/About";
-import FounderPage from "./components/FounderPage";
+import FounderPage from "./pages/FounderPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   return (
@@ -20,15 +21,17 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/meetfounder" element={<FounderPage />} />
+        <Route path="/about" element={<AboutPage />} />
 
         <Route path="/donation" element={<DonationPage />} />
         <Route path="/adoption" element={<AdoptionPage />} />
         <Route path="/vol" element={<VolunteerPage />} />
-        <Route path="/about" element={<Abs />} />
-
-        <Route path="/abs" element={<FounderPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/press" element={<PressMentions />} />
+        <Route path="/sponsor" element={<Sponsors />} />
+        <Route path="/financials" element={<Financials />} />
       </Routes>
       <Footer />
     </Router>
