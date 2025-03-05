@@ -1,25 +1,29 @@
 import PetHero from "../assets/editpet2.jpg";
-import { Link } from "react-router-dom"; // Added import for Link
+import { Link } from "react-router-dom";
 
 const HeroSection = () => (
   <div className="relative">
     {/* Overlay */}
     <div className="absolute inset-0 bg-black opacity-50"></div>
-
+    
     {/* Hero Section */}
-    <div
-      className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[615px] w-full flex items-center justify-start bg-amber-900 md:bg-cover md:bg-center md:bg-no-repeat"
+    <div 
+      className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[615px] w-full flex items-center justify-start 
+                 bg-[#181212] 
+                 md:bg-cover md:bg-center md:bg-no-repeat 
+                 md:bg-[image:var(--bg-image)]"
       style={{
-        backgroundImage: `@media (min-width: 768px) { url(${PetHero}) }`,
+        '--bg-image': `url(${PetHero})`,
+        backgroundImage: `url(${PetHero})`
       }}
     >
       {/* Text Container */}
       <div className="max-w-7xl px-4 sm:px-6 lg:px-10 xl:pl-20 text-left py-12 md:py-16 lg:py-20">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
+        <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
           <span className="block">Every Stray Deserves</span>
           <span className="block text-amber-300">A Chance To Live</span>
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 md:mb-8 max-w-3xl">
+        <p className="text-md sm:text-xl md:text-2xl text-white mb-6 md:mb-8 max-w-3xl">
           Together, we can transform the lives of Udaipur's street animals
           through compassion, care, and community action.
         </p>

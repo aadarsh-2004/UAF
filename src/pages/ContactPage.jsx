@@ -16,19 +16,19 @@ const ContactPage = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      details: ["+91 9876543210"],
-      action: "tel:+919876543210",
+      details: ["+91 6367139345"],
+      action: "tel:+916367139345",
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      details: ["info@udaipuranimalfeed.org", "support@udaipuranimalfeed.org"],
-      action: "mailto:info@udaipuranimalfeed.org",
+      details: ["info@udaipuranimalfeed.org", "udaipuranimalfeed@gmail.com"],
+      action: "mailto:udaipuranimalfeed@gmail.com",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
-      details: ["123 Animal Care Street", "Udaipur, Rajasthan 313001"],
+      details: ["10 Siddharth Nagar ,Inspiro building , New bhopalpura , Udaipur, Rajasthan, India"],
       action: "https://maps.google.com",
     },
     {
@@ -106,7 +106,7 @@ const ContactPage = () => {
             {/* Map */}
             <div className="bg-white rounded-lg overflow-hidden h-96 md:h-auto shadow-md border border-amber-100">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3627.703626360375!2d73.70199207536255!3d24.59942247810055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDM1JzU3LjkiTiA3M8KwNDInMTYuNCJF!5e0!3m2!1sen!2sin!4v1739015620043!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3627.659051983043!2d73.70162317481838!3d24.600960155593246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3967e5aad2aa5ae5%3A0xcf50d9ffc7f116c9!2sUdaipur%20animal%20feed%20NGO!5e0!3m2!1sen!2sin!4v1741150105216!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

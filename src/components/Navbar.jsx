@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import hh from "../assets/hh.png";
@@ -6,10 +6,11 @@ import hh from "../assets/hh.png";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Adoption", path: "/adoption" },
+    // { name: "Adoption", path: "/adoption" },
     { name: "Get Involved", path: "/gallery" },
     { name: "Contact", path: "/contact" },
   ];
@@ -21,6 +22,27 @@ const Navbar = () => {
     { name: "Sponsor", path: "/sponsor" },
     { name: "Financial Reports", path: "/financials" },
   ];
+
+  // Handle clicking outside of dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsAboutDropdownOpen(false);
+      }
+    };
+
+    // Add event listener
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      // Remove event listener on cleanup
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Toggle dropdown function
+  const toggleAboutDropdown = () => {
+    setIsAboutDropdownOpen(!isAboutDropdownOpen);
+  };
 
   return (
     <nav className="bg-[#181212] sticky top-0 z-50">
@@ -55,12 +77,14 @@ const Navbar = () => {
             ))}
 
             {/* About Us Dropdown (Desktop) */}
-            <div
+            <div 
               className="relative group"
-              onMouseEnter={() => setIsAboutDropdownOpen(true)}
-              onMouseLeave={() => setIsAboutDropdownOpen(false)}
+              ref={dropdownRef}
             >
-              <button className="flex items-center text-white hover:text-amber-600 px-3 py-2 font-medium">
+              <button 
+                onClick={toggleAboutDropdown}
+                className="flex items-center text-white hover:text-amber-600 px-3 py-2 font-medium"
+              >
                 About Us <ChevronDown size={18} className="ml-2" />
               </button>
 
@@ -72,6 +96,7 @@ const Navbar = () => {
                       key={item.name}
                       to={item.path}
                       className="block px-4 py-2 text-amber-800 hover:bg-amber-100"
+                      onClick={() => setIsAboutDropdownOpen(false)}
                     >
                       {item.name}
                     </Link>
@@ -117,13 +142,16 @@ const Navbar = () => {
             ))}
 
             {/* About Us Dropdown (Mobile) */}
-            <div className="border-t border-amber-200 pt-2">
+            <div className="border-t border-amber-200 pt-2" ref={dropdownRef}>
               <button
                 className="w-full flex justify-between px-3 py-2 text-amber-800 font-medium hover:bg-amber-100 rounded-md"
-                onClick={() => setIsAboutDropdownOpen(!isAboutDropdownOpen)}
+                onClick={toggleAboutDropdown}
               >
                 About Us
-                <ChevronDown size={18} />
+                <ChevronDown 
+                  size={18} 
+                  className={`transition-transform ${isAboutDropdownOpen ? 'rotate-180' : ''}`} 
+                />
               </button>
               {isAboutDropdownOpen && (
                 <div className="mt-1 bg-white rounded-md shadow-md">
