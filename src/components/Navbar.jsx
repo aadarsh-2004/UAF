@@ -11,7 +11,8 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     // { name: "Adoption", path: "/adoption" },
-    { name: "Get Involved", path: "/gallery" },
+    { name: "Our-Projects", path: "/projects" },
+    // { name: "Get Involved", path: "/gallery" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -57,7 +58,7 @@ const Navbar = () => {
                     Udaipur Animal Feed
                   </div>
                   <div className="text-xs text-amber-700">
-                    Helping Paws, Saving Lives
+                    एक कदम बेजुबानो की और
                   </div>
                 </div>
               </div>

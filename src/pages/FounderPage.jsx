@@ -10,42 +10,7 @@ import founderVisionImage from "/images/1.jpg";
 const FounderPage = () => {
   return (
     <div className="bg-white">
-      {/* Hero Section */}
-      {/* <div className="relative">
-        <div className="absolute inset-0 bg-black opacity-60"></div>
-        <div
-          className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] w-full flex items-center justify-center bg-cover bg-center"
-          style={{ backgroundImage: `url(${founderHeroImage})` }}
-        >
-          <div className="text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Meet Our Founder
-            </h1>
-            <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto">
-              The visionary behind our mission to transform the lives of
-              Udaipur's stray animals
-            </p>
-          </div>
-        </div>
-      </div> */}
-
-      {/* <div className="relative">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-
-        <div
-          className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[615px] w-full flex items-center justify-start bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${founderHeroImage})` }}
-        >
-          <div className="max-w-7xl px-4 sm:px-6 lg:px-10 xl:pl-20 text-left py-12 md:py-16 lg:py-20">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
-              <span className="block">Founders</span>
-              <span className="block text-amber-900">Name</span>
-              <span className="block text-amber-900">Name</span>
-
-            </h1>
-          </div>
-        </div>
-      </div> */}
+      
       <div className="relative overflow-hidden">
         {/* Background Image with subtle zoom effect */}
         <div
@@ -87,7 +52,7 @@ const FounderPage = () => {
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white">Name</h3>
+                    <h3 className="text-xl font-semibold text-white">Dimple Bhawsar</h3>
                     <p className="text-amber-400 font-medium">
                       Co-Founder & Director
                     </p>
@@ -103,7 +68,7 @@ const FounderPage = () => {
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white">Name</h3>
+                    <h3 className="text-xl font-semibold text-white">Ravi Bhawsar</h3>
                     <p className="text-amber-400 font-medium">
                       Co-Founder & President
                     </p>
@@ -170,7 +135,7 @@ const FounderPage = () => {
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-                Anita Sharma
+                Dimple Bhawsar  
               </h2>
               <p className="text-lg text-gray-700 italic mb-6">
                 "Every time I see an animal in pain, I'm reminded of why we
@@ -280,7 +245,7 @@ const FounderPage = () => {
         </div>
       </section>
 
-      {/* Vision & Philosophy Section */}
+      {/* Vision & Philosophy Section
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -347,13 +312,13 @@ const FounderPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Message Section */}
       <section className="py-16 md:py-24 bg-amber-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
-            A Message From Anita
+            A Message From Dimple
           </h2>
 
           <div className="max-w-4xl mx-auto bg-white p-8 md:p-10 rounded-lg shadow-lg relative">
@@ -400,7 +365,7 @@ const FounderPage = () => {
       <section className="py-16 md:py-24 bg-amber-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Join Anita's Mission
+            Join Dimple's Mission
           </h2>
           <p className="text-xl max-w-3xl mx-auto mb-10">
             Be part of the change we're creating for Udaipur's stray animals.

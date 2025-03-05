@@ -205,7 +205,7 @@ const DonationPage = () => {
                         </h3>
                         <div className="bg-white border border-amber-200 rounded-lg p-3 mb-4">
                           <p className="text-lg font-medium text-amber-900">
-                            udaipuranimal@ybl
+                            6367139345
                           </p>
                         </div>
                         <button
@@ -246,10 +246,10 @@ const DonationPage = () => {
                         <div className="space-y-3 mb-4">
                           <div className="flex justify-between">
                             <span className="text-amber-700">
-                              Account Name:
+                              Bank Name:
                             </span>
                             <span className="font-medium text-amber-900">
-                              Udaipur Animal Feed Foundation
+                              YES BANK
                             </span>
                           </div>
                           <div className="flex justify-between">
@@ -257,13 +257,13 @@ const DonationPage = () => {
                               Account Number:
                             </span>
                             <span className="font-medium text-amber-900">
-                              1234567890123
+                              065194600000414
                             </span>
                           </div>
                           <div className="flex justify-between">
                             <span className="text-amber-700">IFSC Code:</span>
                             <span className="font-medium text-amber-900">
-                              SBIN0001234
+                              YESB0000651
                             </span>
                           </div>
                         </div>

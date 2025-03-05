@@ -104,7 +104,7 @@ const VolunteerPage = () => {
       const encodedMessage = encodeURIComponent(message);
 
       // Replace with your organization's WhatsApp number
-      const whatsappNumber = "911234567890"; // Format: country code + number
+      const whatsappNumber = "916367139345"; // Format: country code + number
 
       // Create WhatsApp URL
       const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;

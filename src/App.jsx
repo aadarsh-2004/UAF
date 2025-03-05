@@ -13,6 +13,7 @@ import Financials from "./pages/Financials";
 import ScrollToTop from "./utils/scrollTop";
 import FounderPage from "./pages/FounderPage";
 import AboutPage from "./pages/AboutPage";
+import OurProjects from "./pages/OurProjects";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
         <Route path="/press" element={<PressMentions />} />
         <Route path="/sponsor" element={<Sponsors />} />
         <Route path="/financials" element={<Financials />} />
+        <Route path="/projects" element={<OurProjects />} />
+        
       </Routes>
       <Footer />
     </Router>
